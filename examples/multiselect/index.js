@@ -5,7 +5,8 @@ import '../index.css'
 import _T from '../../i18n/i18n'
 import { i18n } from '../../i18n/i18n'
 import txt from '../examples.fr.js'
-
+import VectorLayer from 'ol/layer/Vector.js'
+import { Circle } from 'ol/style.js'
 
 import md2html from '../../md/md2html'
 import ol_ext_element from 'ol-ext/util/element'
@@ -27,6 +28,18 @@ const carte = new StoryMap({
 carte.on(['read:start', 'loading'], () => {
   dialog.showWait('Chargement en cours...')
 })
+
+var version;
+try {
+    var layer = new VectorLayer({ style: new Circle({ radius: 30 }) });
+}
+catch(err) {
+    console.log(err)
+    var parts = err.message.split("/v");
+    parts = parts[parts.length - 1].split("/");
+    version = parts[0];
+}
+console.log(version);
 
 const divFeature = document.querySelector('#shownFeature')
 window.divFeature = divFeature

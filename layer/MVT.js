@@ -1,5 +1,5 @@
 import VectorTileLayer from './VectorTile'
-import { applyStyle } from 'ol-mapbox-style';
+import { applyStyle } from 'ol-mapbox-style/dist/olms.js';
 import Ajax from 'ol-ext/util/Ajax'
 
 /**
